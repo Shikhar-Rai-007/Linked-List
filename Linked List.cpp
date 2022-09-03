@@ -87,8 +87,38 @@ class node
 //     delete todelete;
 // }
 
-// Linear Doubly Linked List
+//Delete at Position in a Singly Linked List
+// void deleteNode(ListNode* &newhead,int n){
+//     if(newhead==NULL){
+//         return;
+//     }
 
+//     ListNode* temp=newhead;
+
+//     if(n==1){
+//         newhead=temp->next;
+//         delete temp;
+//         return;
+//     }
+
+//     int count=1;
+
+//     while(temp!=NULL && count<(n-1)){
+//         temp=temp->next;
+//         count++;
+//     }
+
+//     ListNode* next=temp->next->next;
+
+//     delete temp->next;
+
+//     temp->next=next;
+
+//     return;
+//}
+
+
+// Linear Doubly Linked List
 // class Node
 // {
 //     public:
@@ -297,7 +327,7 @@ class node
 // //     return temp;
 // // }
 // //Optimized
-// node* findMiddle(node* head){
+// ListNode* findMiddle(ListNode* head){
 //     if(head==NULL || head->next==NULL){
 //         return head;
 //     }
@@ -306,8 +336,8 @@ class node
 //         return head->next;
 //     }
 
-//     node* slow=head;
-//     node* fast=head->next;
+//     ListNode* slow=head;
+//     ListNode* fast=head->next;
 
 //     while(fast!=NULL){
 //         fast=fast->next;
@@ -338,15 +368,50 @@ class node
 //     }
 //     return prevptr;
 // }
-// //Recursive Way
-// node* reverseRecursive(node* &head)
+
+//Recursive Way
+// ListNode* reverseRecursive(ListNode* &head)
 // {
 //     if (head==NULL || head->next==NULL)
 //     {
 //         return head;
 //     }
-//     node* newhead=reverseRecursive(head->next);
+//     ListNode* newhead=reverseRecursive(head->next);
 //     head->next->next=head;
 //     head->next=NULL;
 //     return newhead;
+// }
+
+//Remove Nth Node from The end of the linked list
+// ListNode* removeNthFromEnd(ListNode* head,int n){
+//     ListNode* newHead=reverseRecusrsive(ListNode* head);
+
+//     deleteNode(newHead,n);
+
+//     ListNode* header=reverseRecusrsive(newHead);
+
+//     return header;
+// }
+
+//Reorder List
+// void reorderList(ListNode* head) {
+//         ListNode* middleNode=findMiddle(head);
+        
+//         ListNode* second=reverseRecursive(middleNode->next);
+        
+//         middleNode->next=NULL;
+        
+//         ListNode* first=head;
+        
+//         while(second){
+//             //Keep Track of List
+//             ListNode* firstNext=first->next;
+//             ListNode* secondNext=second->next;
+//             //Change Links
+//             first->next=second;
+//             second->next=firstNext;
+//             //Increment first and second
+//             first=firstNext;
+//             second=secondNext;
+//         }
 // }
